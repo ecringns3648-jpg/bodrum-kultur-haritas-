@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Bodrum Kültür Haritası</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+
+        .bilgi-karti {
+            width: 250px;
+        }
+
+        .bilgi-karti h2 {
+            margin-top: 0;
+        }
+
+        .bilgi-karti img {
+            width: 100%;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Bodrum Kültür Haritası</h1>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // Bodrum haritası
+        var map = L.map('map').setView([37.0344, 27.4305], 13);
+
+        // Harita
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap &copy; CARTO'
+        }).addTo(map);
+
+
+        // BODRUM KALESİ
+        var kale = L.marker([37.0321, 27.4291]).addTo(map);
+
+        kale.bindPopup(`
+            <div class="bilgi-karti">
+
+                <h2>🏰 Bodrum Kalesi</h2>
+
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Bodrum_Castle_2014.jpg/640px-Bodrum_Castle_2014.jpg">
+
+                <p>
+                    Bodrum Kalesi, Bodrum'un en önemli tarihi yapılarından biridir.
+                    Kale, 15. yüzyılda St. Jean Şövalyeleri tarafından inşa edilmiştir.
+                </p>
+
+                <p>
+                    Günümüzde Sualtı Arkeoloji Müzesi'ne ev sahipliği yapmaktadır.
+                </p>
+
+                <b>📍 Bodrum, Muğla</b>
+
+            </div>
+        `);
+    </script>
+
+</body>
+</html>
